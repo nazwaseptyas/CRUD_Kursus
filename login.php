@@ -21,13 +21,13 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="crud.php">CRUD Kursus</a>
+                        <a class="nav-link" aria-current="page" href="crud.php">CRUD Kursus</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="tabel.php">Tabel Data Kursus</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.php">Sign In</a>
+                        <a class="nav-link active" href="login.php">Sign In</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="register.php">Sign Up</a>
@@ -37,35 +37,20 @@
         </div>
     </nav>
     <div class="container crud-container">
-        <h4 class="text-center">CRUD Kursus</h4>
-        <p class="text-center">Input data untuk mengikuti kursus</p>
-        <form action="crud_kursus.php" method="POST">
+        <h4 class="text-center">Sign In</h4>
+        <p class="text-center">Masuk Akun untuk mengikuti kursus</p>
+        <form action="login_user.php" method="POST">
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Nama Lengkap</label>
-                <input type="text" name="nama" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Masukkan Nama Lengkap">
+                <label for="exampleFormControlInput1" class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" id="exampleFormControlInput1"
+                    placeholder="Masukkan Username Anda">
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Kelas</label>
-                <input type="text" name="kelas" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Masukkan Kelas Anda">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
             </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">NPM</label>
-                <input type="text" name="npm" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Masukkan NPM Anda">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
-                    placeholder="name@example.com">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Pilihan Kursus</label>
-                <input type="text" name="kursus" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Ex: Junior Web Programming">
-            </div>
-            <button class="btn btn-primary" type="submit">Simpan Kursus</button>
+            <p>Belum punya akun? <a href="register.php">Sign Up</a></p>
+            <button class="btn btn-primary" name="login" type="submit">Sign In</button>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

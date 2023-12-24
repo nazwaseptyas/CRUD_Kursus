@@ -49,6 +49,12 @@ if (isset($_GET['id'])) {
                     <li class="nav-item">
                         <a class="nav-link active" href="tabel.php">Tabel Data Kursus</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.php">Sign Up</a>
+                    </li>
                 </ul>
             </div>
         </div>
