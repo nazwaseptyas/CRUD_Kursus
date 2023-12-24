@@ -27,39 +27,54 @@
                         <a class="nav-link" href="tabel.php">Tabel Data Kursus</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="tabel_user.php">Tabel Data User</a>
+                        <a class="nav-link active" href="tabel_user.php">Tabel Data User</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="login.php">Sign In</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="register.php">Sign Up</a>
+                        <a class="nav-link" href="register.php">Sign Up</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container crud-container">
-        <h4 class="text-center">Sign Up</h4>
-        <p class="text-center">Daftar Akun untuk mengikuti kursus</p>
-        <form action="register_user.php" method="POST">
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Username</label>
-                <input type="text" name="username" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Masukkan Username Anda">
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
-                    placeholder="name@example.com">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-            </div>
-            <p>Sudah punya akun? <a href="login.php">Sign In</a></p>
-            <button class="btn btn-primary" name="register" type="submit">Sign Up</button>
-        </form>
+    <div class="container tabel-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+                <?php
+                require 'koneksi.php';
+
+                $query_sql = "SELECT * FROM tbl_users";
+                $result = mysqli_query($conn, $query_sql);
+
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<tr>
+                            <td>{$row['id']}</td>
+                            <td>{$row['username']}</td>
+                            <td>{$row['email']}</td>
+                            <td>
+                                <a href='edit_user.php?id={$row['id']}' class='btn btn-sm btn-primary'>Edit</a>
+                                <form action='delete_user.php' method='POST' style='display:inline;'>
+                                    <input type='hidden' name='user_id' value='{$row['id']}' />
+                                    <button type='submit' class='btn btn-sm btn-danger' onclick=\"return confirm('Ingin Menghapus Data Akun?')\">Delete</button>
+                                </form>
+                            </td>
+                        </tr>";
+                }
+
+                mysqli_close($conn);
+                ?>
+            </tbody>
+        </table>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

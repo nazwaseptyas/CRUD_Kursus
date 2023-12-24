@@ -27,6 +27,9 @@
                         <a class="nav-link active" href="tabel.php">Tabel Data Kursus</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="tabel_user.php">Tabel Data User</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="login.php">Sign In</a>
                     </li>
                     <li class="nav-item">

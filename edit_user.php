@@ -1,3 +1,26 @@
+<?php
+require 'koneksi.php';
+
+if (isset($_GET['id'])) {
+    $user_id = $_GET['id'];
+
+    $query_sql = "SELECT * FROM tbl_users WHERE id = $user_id";
+    $result = mysqli_query($conn, $query_sql);
+
+    if ($result && $row = mysqli_fetch_assoc($result)) {
+        $user_data = $row;
+    } else {
+        echo "User not found";
+        exit();
+    }
+
+    mysqli_close($conn);
+} else {
+    echo "Invalid request";
+    exit();
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -24,7 +47,7 @@
                         <a class="nav-link" aria-current="page" href="crud.php">CRUD Kursus</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="tabel.php">Tabel Data Kursus</a>
+                        <a class="nav-link active" href="tabel.php">Tabel Data Kursus</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="tabel_user.php">Tabel Data User</a>
@@ -33,32 +56,28 @@
                         <a class="nav-link" href="login.php">Sign In</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="register.php">Sign Up</a>
+                        <a class="nav-link" href="register.php">Sign Up</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container crud-container">
-        <h4 class="text-center">Sign Up</h4>
-        <p class="text-center">Daftar Akun untuk mengikuti kursus</p>
-        <form action="register_user.php" method="POST">
+        <h4 class="text-center">Edit Data User</h4>
+        <p class="text-center">Edit Data yang Sesuai</p>
+        <form action="edit_datauser.php" method="POST">
+            <input type="hidden" name="user_id" value="<?php echo $user_data['id']; ?>" />
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Username</label>
-                <input type="text" name="username" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Masukkan Username Anda">
+                <input type="text" name="edit_username" class="form-control" id="exampleFormControlInput1"
+                    value="<?php echo $user_data['username']; ?>">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
-                    placeholder="name@example.com">
+                <input type="email" name="edit_email" class="form-control" id="exampleFormControlInput1"
+                    placeholder="name@example.com" value="<?php echo $user_data['email']; ?>">
             </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-            </div>
-            <p>Sudah punya akun? <a href="login.php">Sign In</a></p>
-            <button class="btn btn-primary" name="register" type="submit">Sign Up</button>
+            <button class="btn btn-primary" type="submit">Edit User</button>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
