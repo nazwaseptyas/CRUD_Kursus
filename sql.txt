@@ -1,0 +1,8 @@
+CREATE TABLE tbl_kursusweb (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nama VARCHAR(50) NOT NULL,
+    kelas VARCHAR(10) NOT NULL,
+    npm VARCHAR(10) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    kursus VARCHAR(100) NOT NULL
+);
